@@ -1,0 +1,24 @@
+package com.employee.serviceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.employee.Repository.EmployeeNamedRepo;
+import com.employee.entity.Employee;
+import com.employee.service.EmployeeNamedService;
+
+@Service
+public class EmployeeNamedServiceImpl implements EmployeeNamedService {
+	
+	@Autowired
+	private EmployeeNamedRepo employeeNamedRepo;
+
+	@Override
+	public List<Employee> getBySalary(Long salary) {
+		
+		return employeeNamedRepo.findBySalary(salary);
+	}
+
+}

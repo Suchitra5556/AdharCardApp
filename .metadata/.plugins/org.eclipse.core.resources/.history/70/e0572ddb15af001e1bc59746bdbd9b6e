@@ -1,0 +1,9 @@
+package com.adhar.requestvalidation;
+
+import com.adhar.entity.AdharEntity;
+
+public interface RequestValidation {
+	
+	public void payloadValidation(AdharEntity adharEntity);
+
+}

@@ -1,0 +1,89 @@
+package com.employee.exception;
+
+import java.time.LocalDateTime;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.employee.response.ResponseMessage;
+
+@RestControllerAdvice
+public class GlobalExceptionHandling {
+	
+//	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+//	public String employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+//		
+//		return e.getMessage();
+//		
+//	}
+	
+//	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+//	public ResponseMessage employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+//		
+//		ResponseMessage responseMessage = new ResponseMessage();
+//		responseMessage.setMessage(e.getMessage());
+//		return  responseMessage;
+//		
+//	}
+	
+	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+	public ResponseMessage employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		responseMessage.setCode(HttpStatus.NOT_FOUND.value());
+		responseMessage.setStatus("Value Not Found In DB");
+		responseMessage.setDateTime(LocalDateTime.now());
+		return  responseMessage;
+		
+	}
+	@ExceptionHandler(SalaryNotFoundException.class)
+	public ResponseMessage salaryNotFoundException(SalaryNotFoundException e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		responseMessage.setCode(HttpStatus.NOT_FOUND.value());
+		responseMessage.setStatus("Value Not Found In DB");
+		responseMessage.setDateTime(LocalDateTime.now());
+		return  responseMessage;
+		
+	}
+	@ExceptionHandler(EmployeeNotFoundByIdException.class)
+	public ResponseMessage employeeNotFoundByIdException(EmployeeNotFoundByIdException e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		responseMessage.setCode(HttpStatus.NOT_FOUND.value());
+		responseMessage.setStatus("Value Not Found In DB");
+		responseMessage.setDateTime(LocalDateTime.now());
+		return  responseMessage;
+		
+	}
+	@ExceptionHandler(EmployeeNotFoundWithAddressException.class)
+	public ResponseMessage employeeNotFoundWithAddressException(EmployeeNotFoundWithAddressException e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		responseMessage.setCode(HttpStatus.NOT_FOUND.value());
+		responseMessage.setStatus("Value Not Found In DB");
+		responseMessage.setDateTime(LocalDateTime.now());
+		return  responseMessage;
+		
+	}
+	// Gloable Exception Handdler
+	@ExceptionHandler(Exception.class)
+	public ResponseMessage exception(Exception e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		responseMessage.setCode(HttpStatus.NOT_FOUND.value());
+		responseMessage.setStatus("Value Not Found In DB");
+		responseMessage.setDateTime(LocalDateTime.now());
+		return  responseMessage;
+		
+	}
+
+
+}

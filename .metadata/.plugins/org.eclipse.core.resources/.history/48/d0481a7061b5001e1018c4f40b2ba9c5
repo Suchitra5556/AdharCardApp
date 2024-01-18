@@ -1,0 +1,22 @@
+package com.employee.exception2;
+
+import java.time.LocalDateTime;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobaleException {
+	
+	@ExceptionHandler(NotFoundByNameException.class)
+	public Response notFoundByNameException(NotFoundByNameException e)
+	{
+		Response response = new Response();
+		response.setMessage(e.getMessage());
+		response.setDateTime(LocalDateTime.now());
+		//response.setCode(HttpStatus.NOT_FOUND);
+		return response;
+	}
+
+}

@@ -1,0 +1,36 @@
+package com.employee.serviceImplementation;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.employee.Repository.EmpRepository;
+import com.employee.entity.Employee;
+import com.employee.service.EmployeeService;
+
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+	
+	@Autowired
+	EmpRepository empRepository;
+	
+	
+
+	@Override
+	public Employee saveEmployee(Employee employee) {
+		
+		Employee saveemp= empRepository.save(employee);
+		return saveemp;
+	}
+
+	@Override
+	public List<Employee> saveEmployee(List<Employee> employee) {
+		
+		List<Employee> list = empRepository.saveAll(employee);
+		
+		return list;
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.employee.exception2;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobaleException {
+	
+	@ExceptionHandler(NotFoundByNameException.class)
+	public Response notFoundByNameException(NotFoundByNameException e)
+	{
+		Response response.
+	}
+
+}

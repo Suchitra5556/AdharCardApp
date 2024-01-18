@@ -1,0 +1,5 @@
+package com.adhar.exceptions;
+
+public class AdharEntityException extends Exception {
+
+}

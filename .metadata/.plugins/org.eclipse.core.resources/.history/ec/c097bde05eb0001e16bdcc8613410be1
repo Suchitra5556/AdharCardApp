@@ -1,0 +1,15 @@
+package com.pan.card.service;
+
+import java.util.List;
+
+import com.pan.card.entity.PanCardE;
+
+public interface PanCardService {
+	
+	public PanCardE saveusers(PanCardE panCardE);
+	
+	List<PanCardE> findByCard(String cardNumber);
+	
+	public void deleteByCardNum(String cardNumber);
+
+}

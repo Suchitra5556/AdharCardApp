@@ -1,0 +1,37 @@
+package com.adhar.serveceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.adhar.entity.AdharEntity;
+import com.adhar.repository.AdharRepository;
+import com.adhar.service.AdharService;
+
+@Service
+public class AdharServiceImpl implements AdharService
+{
+
+		@Autowired 
+		private AdharService adharservice;
+		
+		@Autowired
+		private AdharRepository adharrepo;
+
+		@Override
+		public AdharEntity save(AdharEntity adhar) {
+			AdharEntity list = adharrepo.save(adhar);
+			return list;
+		}
+
+		@Override
+		public List<AdharEntity> getAll() {
+			List<AdharEntity> list = adharrepo.findAll();
+			return list;
+		}
+		
+	
+	
+}

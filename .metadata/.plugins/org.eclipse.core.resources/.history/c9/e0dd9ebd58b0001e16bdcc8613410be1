@@ -1,0 +1,21 @@
+package com.pan.card.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.pan.card.entity.PanCardE;
+import java.util.List;
+
+@Repository
+public interface PanCardRepository extends JpaRepository<PanCardE, Integer> 
+
+{
+	public PanCardE save(PanCardE panCardE);
+	
+	public  List<PanCardE> findByCardNumber(String cardNumber);
+	
+	public void delete(String cardNumber);
+	
+	public void deleteByCardNumber(String cardNumber);
+
+}

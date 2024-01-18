@@ -1,0 +1,15 @@
+package com.cust.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CustController {
+	
+	@GetMapping("/getcust")
+	public String cust()
+	{
+		return "I am the no one cust";
+	}
+
+}

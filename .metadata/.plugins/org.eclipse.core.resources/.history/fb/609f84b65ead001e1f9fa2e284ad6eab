@@ -1,0 +1,17 @@
+package com.adhar.service;
+import java.util.List;
+
+
+import org.springframework.stereotype.Service;
+
+import com.adhar.entity.AdharEntity;
+
+
+//@Service
+public interface AdharService{
+	
+	public AdharEntity save(AdharEntity adhar);
+	public List<AdharEntity> getAll();
+	
+
+}

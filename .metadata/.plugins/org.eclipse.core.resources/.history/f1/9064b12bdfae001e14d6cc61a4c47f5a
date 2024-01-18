@@ -1,0 +1,20 @@
+package com.adhar.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.adhar.entity.AdharEntity;
+
+@Repository
+public interface AdharRepository extends JpaRepository<AdharEntity, Long> 
+{
+	//AdharEntity findById(long id);
+	@Query("Select firstName,lastName,contry from AdharEntity")
+	public Object findByPhNo(long phno );
+	
+	public long findByAdharNo(long adhar );
+	
+	public AdharEntity findByFirstNameAndLastName(String firstName,String Lastname);
+	
+}

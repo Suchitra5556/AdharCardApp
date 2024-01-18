@@ -1,0 +1,17 @@
+package com.adhar.Exception.Validation;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ControllerValidator {
+	
+	String errorMessage;
+	String errorCode;
+	
+	
+	public ControllerValidator()
+	{
+		
+	}
+
+}

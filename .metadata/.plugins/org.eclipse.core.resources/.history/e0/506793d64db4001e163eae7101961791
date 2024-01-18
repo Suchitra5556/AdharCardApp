@@ -1,0 +1,20 @@
+package com.student.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.student.entity.Student;
+import com.student.repository.StudentRepo;
+import com.student.service.StudentService;
+
+public class StudentImpl implements StudentService {
+	
+	@Autowired
+	StudentRepo studentRepo;
+
+	@Override
+	public Student saveStudent(Student student) {
+		studentRepo.save(student)
+	}
+	
+	
+}

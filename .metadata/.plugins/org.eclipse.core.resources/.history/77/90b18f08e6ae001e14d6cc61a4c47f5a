@@ -1,0 +1,59 @@
+//package com.adhar.entity;
+//
+//static class UserResponse {
+//	
+//	 private long adharNo;
+//	 private String firstName;
+//	 private String lastName;
+//	 private String contry;
+//	 
+//	 public UserResponse(String string, String string2)
+//	 {
+//		 
+//	 }
+//	 
+//	public UserResponse(long adharNo, String firstName, String lastName, String contry) {
+//		super();
+//		this.adharNo = adharNo;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.contry = contry;
+//	}
+//
+//	public long getAdharNo() {
+//		return adharNo;
+//	}
+//
+//	public void setAdharNo(long adharNo) {
+//		this.adharNo = adharNo;
+//	}
+//
+//	public String getFirstName() {
+//		return firstName;
+//	}
+//
+//	public void setFirstName(String firstName) {
+//		this.firstName = firstName;
+//	}
+//
+//	public String getLastName() {
+//		return lastName;
+//	}
+//
+//	public void setLastName(String lastName) {
+//		this.lastName = lastName;
+//	}
+//
+//	public String getContry() {
+//		return contry;
+//	}
+//
+//	public void setContry(String contry) {
+//		this.contry = contry;
+//	}
+//	
+//	
+//	 
+//	 
+//
+//}

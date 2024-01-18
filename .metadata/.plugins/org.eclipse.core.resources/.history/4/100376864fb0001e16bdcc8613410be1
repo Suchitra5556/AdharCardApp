@@ -1,0 +1,11 @@
+package com.pan.card.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pan.card.entity.PanCardE;
+
+public interface PanCardRepository extends JpaRepository<PanCardE, Integer> 
+
+{
+
+}

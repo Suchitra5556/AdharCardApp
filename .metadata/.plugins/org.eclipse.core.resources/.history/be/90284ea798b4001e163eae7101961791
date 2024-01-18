@@ -1,0 +1,7 @@
+package com.employee.serviceImpl;
+
+import com.employee.service.EmpDatabaseService;
+
+public class EmpServiceImpl implements  EmpDatabaseService {
+
+}

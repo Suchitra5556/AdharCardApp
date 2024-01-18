@@ -1,0 +1,73 @@
+package com.adhar.serveceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.adhar.Exception.Validation.ServiceValidator;
+import com.adhar.entity.AdharEntity;
+import com.adhar.repository.AdharRepository;
+import com.adhar.service.AdharService;
+
+@Service
+public class AdharServiceImpl implements AdharService {
+
+	final static Logger logger = LoggerFactory.getLogger(AdharEntity.class);
+
+	@Autowired
+	private AdharRepository adharrepo;
+
+	@Override
+	public AdharEntity save(AdharEntity adhar) {
+		try {
+			if (adhar.getFirstName() == null || adhar.getFirstName().isEmpty()) {
+				throw new ServiceValidator("Please pass the value for name", "601");
+			}
+			AdharEntity list = adharrepo.save(adhar);
+			return list;
+		} catch (IllegalArgumentException e) {
+
+			throw new ServiceValidator("Pass The Correct Data so you can save the correct Info in DB",
+					"602" + e.getMessage());
+
+		}
+	}
+
+	@Override
+	public List<AdharEntity> getAll() {
+		List<AdharEntity> list = adharrepo.findAll();
+		return list;
+	}
+
+	@Override
+	public AdharEntity getById(long id) {
+		// AdharEntity adharEntity = adharrepo.findById(id);
+		// return adharEntity.getFirstName();
+		// return adharEntity;
+		return null;
+	}
+
+	@Override
+	public Object getByPhnoOrAdharno(long phnoorAdhar) {
+
+		return adharrepo.findByPhNo(phnoorAdhar);
+	}
+
+	@Override
+	public long getByAdharNo(long adhar) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public AdharEntity getByFirstnameAndLastname(String Firstname, String Lastname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

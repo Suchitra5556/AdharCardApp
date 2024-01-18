@@ -1,0 +1,51 @@
+package com.employee.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.employee.entity.Employee;
+
+@Repository
+public interface EmployeeNamedRepo extends JpaRepository<Employee, Integer>{
+	
+	
+	@Query("select e from Employee e where  e.salary = :salary")
+	List<Employee> findBySalary(Long salary);
+	
+	
+	@Query("select e from Employee e where e.name =:name or e.address=:address")
+	List<Employee> findByNameOrAddress(String name, String address);
+	
+	
+	@Query("select e from Employee e where e.id =:id and e.name=:name")
+	Employee findByIdAndName(Integer id, String name);
+	
+	@Query("select e from Employee e where e.name =:name and e.address=:address")
+	Employee findByAddressAndName(String address, String name);
+	
+	@Query("select e from Employee e where e.name =:empname and e.address=:empaddress")
+	Employee findByIdAndNameDetails(@Param("empaddress") String empaddress,@Param("empname") String empname);
+	
+	@Query("select e.salary from Employee e where e.name =:name ")
+	//select salary from emp whr name = ?
+	Long findBySalary(String name);
+	
+	@Query("select e.id ,e.name,e.salary from Employee e where e.address = :address")
+	Object findByAddress(String address);
+	
+	@Query("select e from Employee e where e.id = :id")
+	List<Employee> findByEmpId(Integer id);
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

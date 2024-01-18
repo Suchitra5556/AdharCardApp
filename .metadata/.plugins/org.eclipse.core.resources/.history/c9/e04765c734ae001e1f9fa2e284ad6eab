@@ -1,0 +1,11 @@
+package com.adhar.Exception.Validation;
+
+import com.adhar.entity.AdharEntity;
+
+public class ResponseV {
+	
+	String message = "Plese Give Valid Adhar No..";
+	
+
+
+}

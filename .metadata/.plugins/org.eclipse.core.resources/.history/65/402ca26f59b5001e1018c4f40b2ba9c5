@@ -1,0 +1,16 @@
+package com.employee.exception;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@RestControllerAdvice
+public class GlobalExceptionHandling {
+	
+	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+	public String employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+		
+		return e.getMessage();
+		
+	}
+
+}

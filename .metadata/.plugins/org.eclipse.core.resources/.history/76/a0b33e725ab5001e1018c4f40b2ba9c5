@@ -1,0 +1,27 @@
+package com.employee.exception;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.employee.response.ResponseMessage;
+
+@RestControllerAdvice
+public class GlobalExceptionHandling {
+	
+//	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+//	public String employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+//		
+//		return e.getMessage();
+//		
+//	}
+	
+	@ExceptionHandler(EmployeeNotFoundWithAddressAndNameException.class)
+	public ResponseMessage employeeNotFoundWithAddressAndNameException(EmployeeNotFoundWithAddressAndNameException e) {
+		
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessage.setMessage(e.getMessage());
+		return  responseMessage;
+		
+	}
+
+}

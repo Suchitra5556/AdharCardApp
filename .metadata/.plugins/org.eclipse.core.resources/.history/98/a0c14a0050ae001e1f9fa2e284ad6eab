@@ -1,0 +1,75 @@
+package com.adhar.Controller;
+
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.adhar.Exception.Validation.ControllerValidator;
+import com.adhar.Exception.Validation.ServiceValidator;
+import com.adhar.entity.AdharEntity;
+import com.adhar.serveceImpl.AdharServiceImpl;
+
+@RestController
+@RequestMapping("/adhar")
+
+public class adharController {
+	@Autowired
+	AdharServiceImpl adsI;
+	
+	
+	@PostMapping("/save")
+	
+	ResponseEntity<?> save(@RequestBody AdharEntity adhar)
+	{
+	try {
+	
+		AdharEntity ae=adsI.save(adhar);
+		return new ResponseEntity<AdharEntity>(ae, HttpStatus.CREATED);
+	}
+	catch (ServiceValidator e)
+	{
+		ControllerValidator cv = new ControllerValidator(e.getErrorMessage(), e.getErrorCode());
+		return new ResponseEntity<ControllerValidator>(cv, HttpStatus.BAD_REQUEST);
+	}
+	catch (Exception e) {
+		ControllerValidator cv = new ControllerValidator("801","something wrong");
+		return new ResponseEntity<ControllerValidator>("802",HttpStatus.BAD_REQUEST);
+	}
+		
+	
+	}
+	@GetMapping ("/getAll")
+	public ResponseEntity<List<AdharEntity>>getAll()
+	{
+		List<AdharEntity> list = adsI.getAll();
+		return new ResponseEntity<List<AdharEntity>>(list, HttpStatusCode.valueOf(202));
+	}
+	
+	
+//	public AdharEntity save(@RequestBody AdharEntity adhar)
+//	{
+//		AdharEntity ae=adsI.save(adhar);
+//		return ae;
+//	}
+//	@GetMapping("/getAll")
+//	
+//	public List<AdharEntity> getAll()
+//	{
+//		List<AdharEntity> list = adsI.getAll();
+//		return list;
+//	}
+//	
+	
+	
+
+}

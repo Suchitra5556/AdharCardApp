@@ -1,0 +1,9 @@
+package com.pan.card.service;
+
+import com.pan.card.entity.Customer;
+
+public interface CustomerService {
+	
+	Customer getByMobile(Long mobile);
+
+}

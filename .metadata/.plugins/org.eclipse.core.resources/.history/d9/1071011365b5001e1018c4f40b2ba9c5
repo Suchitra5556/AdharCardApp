@@ -1,0 +1,28 @@
+package com.employee.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Employee {
+	
+	@Id
+	@Column(name = "EmpId")
+	private Integer id;
+	@Column(name="EmpName")
+	private String name;
+	@Column(name = "EmpSalary")
+	private Long salary;
+	@Column(name = "EmpAddress")
+	private String address;
+	
+	
+	
+}

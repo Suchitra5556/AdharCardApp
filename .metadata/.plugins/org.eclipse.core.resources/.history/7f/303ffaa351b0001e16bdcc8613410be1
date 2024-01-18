@@ -1,0 +1,22 @@
+package com.pan.card.serviceImplementation;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.pan.card.entity.PanCardE;
+import com.pan.card.service.PanCardService;
+
+public class PanCardServiceImplementation implements PanCardService {
+
+	@Autowired
+	PanCardService panCardService;
+	
+	@Override
+	public List<PanCardE> saveusers()
+	{
+		return panCardService.saveusers();
+		 
+	}
+
+}

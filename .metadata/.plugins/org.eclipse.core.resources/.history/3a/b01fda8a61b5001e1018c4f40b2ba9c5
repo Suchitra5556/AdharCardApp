@@ -1,0 +1,15 @@
+package com.employee.exception2;
+
+import java.time.LocalDateTime;
+
+import lombok.Data;
+
+@Data
+public class Response {
+	
+	String message;
+	String code;
+	LocalDateTime dateTime;
+	
+
+}

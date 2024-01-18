@@ -1,0 +1,22 @@
+package com.student.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.student.entity.Student;
+import com.student.serviceImpl.StudentImpl;
+
+@RestController
+@RequestMapping("/student")
+public class StudentController {
+	
+	@Autowired
+	StudentImpl studentImpl;
+	
+	Student savestud(Student student)
+	{
+		return studentImpl.saveStudent(student);
+	}
+
+}

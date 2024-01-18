@@ -1,0 +1,54 @@
+package com.adhar.serveceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.adhar.entity.AdharEntity;
+import com.adhar.repository.AdharRepository;
+import com.adhar.service.AdharServiceDurgesh;
+
+@Service
+public class AdharServiceImplDurgesh implements AdharServiceDurgesh {
+	
+	@Autowired
+	AdharRepository adharRepository;
+
+	@Override
+	public AdharEntity save(AdharEntity adhar) {
+		// TODO Auto-generated method stub
+		return adharRepository.save(adhar);
+	}
+
+	@Override
+	public List<AdharEntity> getAll() {
+		// TODO Auto-generated method stub
+		return adharRepository.findAll();
+	}
+
+	@Override
+	public AdharEntity getById(long id) {
+		// TODO Auto-generated method stub
+		return adharRepository.findById(id).get();
+	}
+
+	@Override
+	public Object getByPhno(long phnoorAdhar) {
+		// TODO Auto-generated method stub
+		return adharRepository.findByPhNo(phnoorAdhar);
+	}
+
+	@Override
+	public Long getByAdharNo(Long adno) {
+		// TODO Auto-generated method stub
+		return adharRepository.findByAdharNo(adno);
+	}
+
+	@Override
+	public AdharEntity getByFirstnameAndLastname(String Firstname, String Lastname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

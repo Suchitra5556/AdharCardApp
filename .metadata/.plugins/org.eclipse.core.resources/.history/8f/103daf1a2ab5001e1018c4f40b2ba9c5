@@ -1,0 +1,85 @@
+package com.employee.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.employee.custom.exception.EmployeeNotFoundByIdException;
+import com.employee.entity.Employee;
+import com.employee.serviceImpl.EmployeeNamedServiceImpl;
+
+@RestController
+@RequestMapping("/nameQuery")
+public class EmpNamedController 
+{
+	@Autowired
+	private  EmployeeNamedServiceImpl employeeNamedServiceImpl;
+	
+	@GetMapping("/getBySal/{salary}")
+	public List<Employee> getBySalary(@PathVariable Long salary) 
+	{
+		 List<Employee> list = employeeNamedServiceImpl.getBySalary(salary);
+		 return list;
+     }
+	@GetMapping("/getBynameoradd/{name}/{address}")
+	public List<Employee> getByNameOrAddress(@PathVariable String name,@PathVariable String address)
+	{
+		List<Employee> list = employeeNamedServiceImpl.getByNameOrAddress(name, address);
+		return list;
+	}
+	@GetMapping("/getByIdAndName/{id}/{name}")
+	public Employee getByIdAndName(@PathVariable Integer id, @PathVariable String name)
+	{
+		Employee emp = employeeNamedServiceImpl.getByIdAndName(id, name);
+		return emp;
+	}
+	@GetMapping("/getByAddressAndNameUnOrder/{address}/{name}")
+	public Employee getByAddressAndNameUnOrder(@PathVariable String address,@PathVariable String name)
+	{
+		Employee emp =employeeNamedServiceImpl.getByAddressAndNameUnOrder(address, name);
+		return emp;
+	}
+	@GetMapping("/findByIdAndNameDetailsVarDiff/{empaddress}/{empname}")
+	public Employee findByIdAndNameDetailsVarDiff(@PathVariable String empaddress, @PathVariable String empname) 
+	{
+		Employee emp= employeeNamedServiceImpl.findByIdAndNameDetailsVarDiff(empaddress, empname);
+		
+		return emp;
+	}
+	@GetMapping("/getByName/{name}")
+	public Long getSalary(@PathVariable String name)
+	{
+		return  employeeNamedServiceImpl.getBySalary(name);
+	}
+	@GetMapping("/getByAddress/{address}")
+	public List<Object[]> getByAddress(@PathVariable String address)
+	{
+		List<Object[]> obj = employeeNamedServiceImpl.getByAddress(address);
+		return obj;
+	}
+	@GetMapping("/getByEmpId/{id}")
+	public ResponseEntity<List<Employee>>  getByEmpId(@PathVariable Integer id) 
+	{
+		try {
+		 List<Employee> list = employeeNamedServiceImpl.getByEmpId(id);
+		 return  new ResponseEntity<List<Employee>>(list, HttpStatus.BAD_REQUEST);
+		 
+		}
+		catch(EmployeeNotFoundByIdException e)
+		{
+			e.getMessage();
+		}
+		 //return list;
+	}
+	
+	
+
+	
+}

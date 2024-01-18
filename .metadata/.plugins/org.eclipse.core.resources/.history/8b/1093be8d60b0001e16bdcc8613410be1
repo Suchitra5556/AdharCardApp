@@ -1,0 +1,49 @@
+package com.pan.card.serviceImplementation;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pan.card.Repository.PanCardRepository;
+import com.pan.card.entity.PanCardE;
+import com.pan.card.service.PanCardService;
+
+@Service
+public class PanCardServiceImplementation implements PanCardService {
+
+	@Autowired
+	PanCardRepository panCardRepository;
+	
+	@Override
+	public PanCardE saveusers(PanCardE panCardE)
+	{
+		PanCardE saveduser = panCardRepository.save(panCardE);
+		return saveduser;
+		 
+	}
+
+	@Override
+	public List<PanCardE> findByCard(String cardNumber) {
+		
+		List<PanCardE> list =panCardRepository.findByCardNumber(cardNumber);
+		return list;
+	}
+
+//	@Override
+//	public void deletePanCardByCardNumber(String cardNumber) {
+//		panCardRepository.deleteByCardNumberJPQL(cardNumber);
+//		
+//	}
+
+	
+	
+	
+	
+//	@Override
+//	public void deleteByCardNum(String cardNumber) {
+//		
+//		panCardRepository.deleteByCardNumber(cardNumber);
+//	}
+
+}

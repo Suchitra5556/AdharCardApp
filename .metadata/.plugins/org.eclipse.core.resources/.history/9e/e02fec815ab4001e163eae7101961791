@@ -1,0 +1,15 @@
+package com.employee;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Employee {
+	
+	Integer id;
+	String name;
+	int salary;
+	String address;
+	
+	
+	
+}

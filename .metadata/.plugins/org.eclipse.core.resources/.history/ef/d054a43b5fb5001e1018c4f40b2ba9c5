@@ -1,0 +1,5 @@
+package com.employee.exception2;
+
+public class NotFoundByNameException {
+
+}

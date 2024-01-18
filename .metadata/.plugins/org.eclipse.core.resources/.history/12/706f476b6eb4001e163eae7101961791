@@ -1,0 +1,12 @@
+package com.employee.service;
+
+import java.util.List;
+
+import com.student.entity.Student;
+
+public interface EmployeeService {
+	
+	Employee saveEmployee(Employee employee);
+	List<Employee> saveEmployee(List<Employee> employee);
+
+}

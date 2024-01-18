@@ -1,0 +1,33 @@
+package com.pan.card.Repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.pan.card.entity.PanCardE;
+
+import jakarta.transaction.Transactional;
+
+@Repository
+@Transactional
+public interface PanCardRepository extends JpaRepository<PanCardE, Integer> 
+
+{
+	public PanCardE save(PanCardE panCardE);
+	
+	public  List<PanCardE> findByCardNumber(String cardNumber);
+	
+	public void delete(String cardNumber);
+	
+	//@Modifying
+//	@Query("delete from panCardE where cardNumber = :cardNumber" )
+//	public void deleteByCardNumber(@Param("cardNumber") String cardNumber);
+	@Modifying
+	@Query(value = "Delete from panCardE where card_number =:cardNumber", nativeQuery = true)
+	public void deleteByCardNumber(@Param("cardNumber")String cardNumber);
+
+}

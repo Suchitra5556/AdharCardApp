@@ -1,0 +1,12 @@
+package com.employee.exception2;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class NotFoundByNameException extends RuntimeException{
+	
+	String massege;
+
+}

@@ -1,0 +1,72 @@
+package com.adhar.entity;
+
+public class AdharValidation extends AdharEntity {
+	
+	 private long adharNo;
+	 private String firstName;
+	 private String lastName;
+	 private long phNo;
+	 private String address;
+	 private String state;
+	 private String contry;
+	public AdharValidation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void validation()
+	{
+		if(adharNo <=0 )
+		{
+			throw new IllegalArgumentException("Enter Valid Adhar no");
+		}
+		if(firstName == null || firstName.isEmpty()|| firstName.isBlank())
+			throw new IllegalArgumentException("Enter Valid Name no");
+	}
+	public long getAdharNo() {
+		return adharNo;
+	}
+	public void setAdharNo(long adharNo) {
+		this.adharNo = adharNo;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public long getPhNo() {
+		return phNo;
+	}
+	public void setPhNo(long phNo) {
+		this.phNo = phNo;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public String getContry() {
+		return contry;
+	}
+	public void setContry(String contry) {
+		this.contry = contry;
+	}
+	 
+	 
+	 
+
+}

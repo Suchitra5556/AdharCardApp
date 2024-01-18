@@ -1,0 +1,60 @@
+package com.adhar.serveceImpl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.adhar.Exception.Validation.ServiceValidator;
+import com.adhar.entity.AdharEntity;
+import com.adhar.repository.AdharRepository;
+import com.adhar.service.AdharService;
+
+@Service
+public class AdharServiceImpl implements AdharService
+{
+
+	final static Logger logger = LoggerFactory.getLogger(AdharEntity.class);
+		@Autowired 
+		private AdharService adharservice;
+		
+		@Autowired
+		private AdharRepository adharrepo;
+
+		@Override
+		public AdharEntity save(AdharEntity adhar)
+		{
+			try
+			{
+			if(adhar.getFirstName()==null || adhar.getFirstName().isEmpty())
+			{
+				throw new ServiceValidator("Please pass the value for name", "601");
+			}
+			AdharEntity list = adharrepo.save(adhar);
+			return list;
+			}
+			catch (IllegalArgumentException e) {
+				
+				throw new ServiceValidator("Pass The Correct Data so you can save the correct Info in DB", "602"+ e.getMessage());
+				
+				
+			}
+		}
+
+		@Override
+		public List<AdharEntity> getAll() {
+			List<AdharEntity> list = adharrepo.findAll();
+			return list;
+		}
+
+		@Override
+		public AdharEntity getBId(long id) {
+		AdharEntity adhardata= adharrepo.getById(id);
+			return adhardata;
+		}
+		
+	
+	
+}

@@ -1,0 +1,5 @@
+package com.adhar.entity;
+
+public class UserResponse {
+
+}

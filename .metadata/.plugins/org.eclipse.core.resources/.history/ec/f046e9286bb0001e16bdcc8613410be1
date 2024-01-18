@@ -1,0 +1,13 @@
+package com.pan.card.Repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pan.card.entity.Customer;
+
+public interface CustomerRepository extends JpaRepository<Customer, Integer>
+{
+	//1.Only write the new functions which are not present in JPA
+	
+	Customer 
+	
+}

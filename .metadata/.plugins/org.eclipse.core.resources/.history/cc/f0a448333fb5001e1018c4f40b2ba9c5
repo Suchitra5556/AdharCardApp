@@ -1,0 +1,93 @@
+package com.employee.serviceImpl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.employee.Repository.EmployeeNamedRepo;
+import com.employee.entity.Employee;
+import com.employee.exception.EmployeeNotFoundByIdException;
+import com.employee.exception.EmployeeNotFoundWithAddressException;
+import com.employee.exception.SalaryNotFoundException;
+import com.employee.service.EmployeeNamedService;
+
+@Service
+public class EmployeeNamedServiceImpl implements EmployeeNamedService {
+	
+	@Autowired
+	private EmployeeNamedRepo employeeNamedRepo;
+
+	@Override
+	public List<Employee> getBySalary(Long salary) {
+		
+		return employeeNamedRepo.findBySalary(salary);
+	}
+
+	@Override
+	public List<Employee> getByNameOrAddress(String name, String address) {
+		return employeeNamedRepo.findByNameOrAddress(name, address);
+		 
+	}
+
+	@Override
+	public Employee getByIdAndName(Integer id, String name) {
+		
+		return employeeNamedRepo.findByIdAndName(id, name);
+	}
+
+	@Override
+	public Employee getByAddressAndNameUnOrder(String address, String name) {
+		
+		return employeeNamedRepo.findByAddressAndNameUnOrder(address, name);
+	}
+
+	@Override
+	public Employee findByIdAndNameDetailsVarDiff(String empaddress, String empname) {
+		
+		return employeeNamedRepo.findByIdAndNameDetailsVarDiff(empaddress, empname);
+	}
+
+	@Override
+	public Long getBySalary(String name) {
+		
+		 Long bySalary = employeeNamedRepo.findBySalary(name);
+		 if(bySalary==0 || bySalary<=100)
+		 {
+			 throw new SalaryNotFoundException("Salary is Not Exist in DB with this name..." +name);
+		 }
+		 else
+		 {
+			 return bySalary;
+		 }
+	}
+
+	@Override
+	public List<Object[]> getByAddress(String address) {
+		
+		 List<Object[]> byAddress = employeeNamedRepo.findByAddress(address);
+		 
+		 if(byAddress.isEmpty() || byAddress==null)
+		 {
+			 throw new EmployeeNotFoundWithAddressException("Employee is not exist with the specific address"+address);
+		 }
+		 else
+		 {
+			 return byAddress;
+		 }
+	}
+
+	@Override
+	public List<Employee> getByEmpId(Integer id) {
+		
+		 List<Employee> byEmpId = employeeNamedRepo.findByEmpId(id);
+		 	
+		 if(byEmpId.isEmpty())
+		 {
+			 throw new EmployeeNotFoundByIdException("Employee not found with this ID"+ id);
+		 }
+		 else
+			 return byEmpId;
+	}
+
+}

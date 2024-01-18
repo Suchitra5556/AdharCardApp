@@ -1,0 +1,27 @@
+package com.adhar.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.adhar.entity.AdharEntity;
+import com.adhar.serveceImpl.AdharServiceImplDurgesh;
+
+@RestController
+@RequestMapping("/adhar/v2")
+public class AdharControllerDurgesh {
+	
+	@Autowired
+	AdharServiceImplDurgesh adharServiceImplDurgesh;
+	
+	
+	@PostMapping("/save")
+	public AdharEntity saveData(@RequestBody AdharEntity adharEntity)
+	{
+		return adharServiceImplDurgesh.save(adharEntity);
+	}
+	
+
+}

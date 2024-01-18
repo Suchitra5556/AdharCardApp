@@ -1,0 +1,65 @@
+package com.adhar.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.adhar.entity.AdharEntity;
+import com.adhar.serveceImpl.AdharServiceImplDurgesh;
+
+@RestController
+@RequestMapping("/adhar/v2")
+public class AdharControllerDurgesh {
+	
+	@Autowired
+	AdharServiceImplDurgesh adharServiceImplDurgesh;
+	
+	
+	@PostMapping("/save")
+	public AdharEntity saveData(@RequestBody AdharEntity adharEntity)
+	{
+		return adharServiceImplDurgesh.save(adharEntity);
+	}
+	
+	@GetMapping("/getAll")
+	public List<AdharEntity> getAll()
+	{
+		return adharServiceImplDurgesh.getAll();
+	}
+	
+	@GetMapping("/byid/{id}")
+	public AdharEntity getById(@PathVariable long id)
+	{
+		return adharServiceImplDurgesh.getById(id);
+	} 
+	
+	@GetMapping("/bynum/{phonenumber}")
+	public Object getByPhno(@PathVariable long phonenumber)
+	{
+		return adharServiceImplDurgesh.getByPhno(phonenumber);
+	}
+
+	@GetMapping("/byadhar/{adno}")
+	public Long getByAdharNo(@PathVariable Long adno)
+	{
+		return (Long) adharServiceImplDurgesh.getByAdharNo(adno);
+	}
+	
+	@GetMapping("/byname/{firstName}/{LastName}")
+	public AdharEntity getByFirstAndLastName(@PathVariable String firstName ,@PathVariable String LastName)
+	{
+		return adharServiceImplDurgesh.getByFirstnameAndLastname(firstName, LastName);
+	}
+	
+	
+	
+	
+
+}

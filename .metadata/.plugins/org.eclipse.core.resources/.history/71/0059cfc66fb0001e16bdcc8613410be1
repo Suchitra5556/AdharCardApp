@@ -1,0 +1,28 @@
+package com.pan.card.serviceImplementation;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pan.card.Repository.CustomerRepository;
+import com.pan.card.entity.Customer;
+import com.pan.card.service.CustomerService;
+
+@Service
+public class CustomerServiceImpl implements CustomerService {
+	
+	@Autowired
+	CustomerRepository customerRepository;
+
+	@Override
+	public Customer getByMobile(Long mobile) {
+		Customer byMobile = customerRepository.findByMobile(mobile);
+		return byMobile;
+	}
+
+	@Override
+	public Customer insertCustomer(Customer customer) {
+		Customer saveCustomer= customerRepository.save(customer);
+		return saveCustomer;
+	}
+
+}
